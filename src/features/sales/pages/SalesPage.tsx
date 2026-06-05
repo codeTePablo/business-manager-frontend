@@ -7,7 +7,7 @@ import { PageHeader, Button, Badge, EmptyState, Spinner } from '@/shared/compone
 export function SalesPage() {
   const { data: sales = [], isLoading } = useQuery({
     queryKey: ['sales'],
-    queryFn: salesService.list,
+    queryFn: () => salesService.list(),
   })
 
   return (
