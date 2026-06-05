@@ -15,6 +15,7 @@ export function RequireRole({ allowed }: { allowed: Role }) {
   const token = useAuthStore(s => s.token)
   const activeBusiness = useBusinessStore(s => s.activeBusiness)
   const location = useLocation()
+  const role = useAuthStore(s => s.user?.role)
 
   console.log('ACTIVE BUSINESS:', activeBusiness)
   console.log('ROLE:', activeBusiness?.my_role)
@@ -26,18 +27,10 @@ export function RequireRole({ allowed }: { allowed: Role }) {
 
   const role = activeBusiness?.my_role
 
-  if (!role || role !== allowed) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-surface-raised">
-        <div className="text-center space-y-3">
-          <p className="font-mono text-4xl font-bold text-border-strong">403</p>
-          <p className="text-sm text-text-muted">
-            No tienes permiso para acceder a esta sección.
-          </p>
-        </div>
-      </div>
-    )
+  if (role !== allowed) {
+    // Redirige a la ruta correcta según el rol real del usuario
+    const redirectTo = role === 'dueno' ? '/dashboard' : '/register-sale'
+    return <Navigate to={redirectTo} replace />
   }
-
   return <Outlet />
 }
