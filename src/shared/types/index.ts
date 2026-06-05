@@ -2,7 +2,7 @@ export type Role = 'dueno' | 'empleado'
 
 export interface ApiError { detail: string; code?: string }
 
-export interface User { id: string; name: string; email: string}
+export interface User { id: string; name: string; email: string; role: Role }
 
 export interface Business {
   id: string; name: string; type: string | null; address: string | null

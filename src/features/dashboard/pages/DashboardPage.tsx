@@ -30,17 +30,19 @@ function RecentSaleRow({ sale }: { sale: Sale }) {
 export function DashboardPage() {
   const { data: summary, isLoading: loadingSummary } = useQuery({
     queryKey: ['sales', 'summary', 'today'],
-    queryFn: salesService.summary,
+    queryFn: () => salesService.summary(), // <-- Función anónima aquí
     refetchInterval: 60_000,
   })
+  
   const { data: recentSales = [], isLoading: loadingSales } = useQuery({
     queryKey: ['sales', 'recent'],
-    queryFn: salesService.list,
+    queryFn: () => salesService.list(), // <-- Función anónima aquí
     select: (data) => data.slice(0, 8),
   })
+  
   const { data: inventory } = useQuery({
     queryKey: ['inventory', 'summary'],
-    queryFn: inventoryService.summary,
+    queryFn: () => inventoryService.summary(), // <-- Función anónima aquí
     refetchInterval: 120_000,
   })
 
