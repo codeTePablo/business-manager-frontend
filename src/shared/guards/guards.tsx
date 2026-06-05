@@ -11,15 +11,9 @@ export function RequireAuth() {
 }
 
 export function RequireRole({ allowed }: { allowed: Role }) {
-
   const token = useAuthStore(s => s.token)
   const activeBusiness = useBusinessStore(s => s.activeBusiness)
   const location = useLocation()
-  const role = useAuthStore(s => s.user?.role)
-
-  console.log('ACTIVE BUSINESS:', activeBusiness)
-  console.log('ROLE:', activeBusiness?.my_role)
-  console.log('ALLOWED:', allowed)
 
   if (!token) {
     return <Navigate to="/login" state={{ from: location }} replace />
@@ -27,10 +21,10 @@ export function RequireRole({ allowed }: { allowed: Role }) {
 
   const role = activeBusiness?.my_role
 
-  if (role !== allowed) {
-    // Redirige a la ruta correcta según el rol real del usuario
+  if (!role || role !== allowed) {
     const redirectTo = role === 'dueno' ? '/dashboard' : '/register-sale'
     return <Navigate to={redirectTo} replace />
   }
+
   return <Outlet />
 }
