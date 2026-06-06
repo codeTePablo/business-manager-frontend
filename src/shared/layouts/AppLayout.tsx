@@ -73,7 +73,7 @@ export function AppLayout({ minimal = false }: { minimal?: boolean }) {
             </button>
           </header>
         )}
-        <div className="p-6 page-enter"><Outlet /></div>
+        <div className="p-3 md:p-6 page-enter"><Outlet /></div>
       </main>
     </div>
   )

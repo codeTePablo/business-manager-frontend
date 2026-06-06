@@ -63,7 +63,7 @@ export function DashboardPage() {
         subtitle={new Date().toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' })}
       />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         {loadingSummary ? (
           Array(4).fill(0).map((_, i) => (
             <div key={i} className="card-padded h-20 flex items-center justify-center"><Spinner size="sm" /></div>
@@ -82,7 +82,7 @@ export function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         <div className="lg:col-span-3 card-padded">
           <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-4">Ventas por hora — hoy</p>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={160}>
             <BarChart data={chartData} barSize={20}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
               <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} />

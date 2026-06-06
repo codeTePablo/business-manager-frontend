@@ -127,7 +127,7 @@ export function PageHeader({ title, subtitle, action }: {
   return (
     <div className="flex items-start justify-between gap-4 mb-6">
       <div>
-        <h1 className="text-lg font-semibold tracking-tight text-text">{title}</h1>
+        <h1 className="text-base md:text-lg font-semibold tracking-tight text-text">{title}</h1>
         {subtitle && <p className="text-xs text-text-muted mt-0.5">{subtitle}</p>}
       </div>
       {action && <div className="flex-shrink-0">{action}</div>}
