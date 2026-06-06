@@ -9,7 +9,6 @@ import toast                from 'react-hot-toast'
 const OWNER_NAV = [
   { to: '/dashboard',     label: 'Dashboard'      },
   { to: '/sales',         label: 'Ventas'         },
-  { to: '/employees',     label: 'Empleados'      },
   { to: '/invoices',      label: 'Facturas'       },
   { to: '/iot',           label: 'Monitor IoT'    },
   { to: '/notifications', label: 'Notificaciones' },
